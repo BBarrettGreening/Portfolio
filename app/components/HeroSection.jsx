@@ -30,7 +30,7 @@ const HeroSection = () => {
                     />
                 </h1>
                 <p className="text-[#ADB7BE] text-base mb-4 sm:text-lg lg:text-2xl">
-                    This page is a brief introduction to my background and the projects i&apos;ve completed.
+                    This page is a brief introduction to my technical background and the projects i&apos;ve completed.
                 </p>
                 <div>
                     <button className="px-6 py-3 rounded-full mr-4 bg-gradient-to-br from-[#663300] via-[#997a00] to-[#da9837] hover:bg-[#0a0a05] text-black w-full sm:w-fit">
