@@ -45,10 +45,10 @@ const HeroSection = () => {
                     </form>
                 </div>
             </div>
-            <div className="col-span-5 place-self-center mt-4 lg:mt-0">
-                <div className="rounded-full bg-[#181818] w-[420px] h-[500px] flex items-center justify-center">
+            <div className="col-span-5 place-self-center mt-8">
+                <div className="rounded-full bg-[#181818] w-[420px] h-[420px] flex items-center justify-center">
                     <Image 
-                    src="./headshot2.jpg"
+                    src="./headshot.jpg"
                     alt="test"
                     className="rounded-full"
                     height={370}
