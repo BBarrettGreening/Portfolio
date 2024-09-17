@@ -30,12 +30,14 @@ const TAB_DATA = [
     )
   },
   {
-    title: "Certifications",
-    id: "certifications",
+    title: "Achievements",
+    id: "achievements",
     content: (
-      <ul>
-        <li>HTML</li>
-        <li>Next.js</li>
+      <ul className="list-disc pl-2">
+        <li>Head of Henning College Award</li>
+        <li className="text-slate-400 list-none">Recognised for my perseverance and performance during my studies at the Thomas Hardye secondary school.</li>
+        <li>Brown Belt Gojo-Ryu Karate</li>
+        <li className="text-slate-400 list-none">Achieved brown belt at Wessex Karate, demonstrating my dedication and commitment to the sport.</li>
       </ul>
     )
   }
@@ -71,10 +73,10 @@ const AboutSection = () => {
                 {" "}
                 Education{" "}
               </TabButton>
-              {/*<TabButton selectTab={() => handleTabChange("certifications")} active={tab === "certifications"}>
+              <TabButton selectTab={() => handleTabChange("achievements")} active={tab === "achievements"}>
               {" "}
-                Certifications{" "}
-              </TabButton>*/}
+                Achievements{" "}
+              </TabButton>
             </div>
             <div className="mt-8">{TAB_DATA.find((t) => t.id === tab).content}</div>
           </div>
