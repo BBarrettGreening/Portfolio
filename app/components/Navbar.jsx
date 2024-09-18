@@ -7,16 +7,20 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
 const navLinks = [
     {
-        title:"About",
-        path:"#about"
+        title:"Home",
+        path:"/"
     },
     {
-        title:"Projects",
-        path:"#projects"
+        title:"Playlists",
+        path:"/playlists"
     },
     {
-        title:"Contact",
-        path:"contact"
+        title:"Reviews",
+        path:"/reviews"
+    },
+    {
+        title:"Sources",
+        path:"/sources"
     }
 ]
 
@@ -25,9 +29,11 @@ const navLinks = [
 const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
     return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-[#181C14] bg-opacity-100">
-        <div className="flex flex-wrap items-center justify-between mx-auto px-4">
-            <Link href="/" className="text-2xl text-white font-semibold">LOGO</Link>
+    <nav className="fixed top-0 left-0 right-0 z-5 bg-[#252525] bg-opacity-100">
+        <div className="flex flex-wrap md:flex-row items-center justify-between mx-auto px-4">
+            <Link href="/" className="text-3xl text-white font-semibold">
+            Jurassic Music Society
+            </Link>
             <div className="mobile-menu block md:hidden">
             {
                 !navbarOpen ? (
@@ -43,7 +49,7 @@ const Navbar = () => {
 
             </div>
             <div className="menu hidden md:block md:w-auto" id="navbar">
-                <ul className="flex p-4 md:p-0 md:flex-row md-space-x-8 mt-10">
+                <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mr-0 mt-5">
                     {navLinks.map((link, index) => (
                             <li key={index}>
                                 <NavLink href={link.path} title={link.title} />
