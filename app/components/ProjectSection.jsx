@@ -7,7 +7,7 @@ const projectsData = [
     {
         id:1,
         title:"JurassicMusicSociety Website",
-        description:"this is a HTML, CSS and JavaScript website made for JurassicMusicSociety with a section for playlists, reviews and sources. There is also a button to join the WhatsApp channel with weekly posts. I plan to remake this project using Next.js framework in the coming month.",
+        description:"this is a HTML, CSS and JavaScript website made for JurassicMusicSociety with a section for playlists, reviews and sources. There is also a button to join the WhatsApp channel with weekly posts. This is their live site but I've also made a Next.js version.",
         image:"./JurassicMusicSociety.png",
         tag: ["All", "HTML"],
         gitUrl: "/",
@@ -15,6 +15,15 @@ const projectsData = [
     },
     {
         id:2,
+        title:"Next.js JurassicMusicSociety Website",
+        description:"this is an improved version of the plain HTML website I made for JurassicMusicSociety, this was planned to replace the original but the site hosting provider doesn't support Node.js servers.",
+        image:"./NJSJurassicMusicSociety.png",
+        tag: ["All", "Next.js"],
+        gitUrl: "https://github.com/BBarrettGreening/NextJSJurassicMusicSociety",
+        previewUrl: "https://bbarrettgreening.github.io/NextJSJurassicMusicSociety/",
+    },
+    {
+        id:3,
         title:"Portfolio Website",
         description:"I created a portfolio site using Next.js framework so I would have something to link on my CV so that employers can get a look at some of the work i've completed before. This project was a fun learning experience and has given me knowledge to improve upon previous work",
         image:"./PortfolioSite.png",
@@ -23,7 +32,7 @@ const projectsData = [
         previewUrl: "https://BBarrettGreening.github.io",
     },
     {
-        id:3,
+        id:4,
         title:"R2Electrical LTD Website",
         description:"I designed and manage R2Electrical LTD's business site through the online provider fasthost. This was my first real-world experience with designing and hosting a website and gave me good inspiration for my other projects.",
         image:"./R2Electrical.png",
