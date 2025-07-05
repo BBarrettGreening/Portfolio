@@ -62,7 +62,7 @@ const AboutSection = () => {
               About Me
             </h2>
             <p className="test-base md:text-lg">
-              I am a 19 year old student currently studying BSc (Hons) Computer Science at the University of Plymouth, I&apos;m going into my second year and preparing to apply for placements. As part of this I&apos;ve developed this site to host a collection of my personal projects to give insight into what I can achieve.
+              I am a 20 year old student currently studying BSc (Hons) Computer Science at the University of Plymouth, I&apos;m currently preparing for my placement with HM Land Registry in Stage 3 of my course. This page is a showcase of my personal projects and achievements, designed to expand as I progress through my studies and career. I have a passion for programming and technology, and I&apos;m always looking for new challenges to improve my skills. I believe that practical experience is key to learning, and I enjoy working on projects that allow me to apply my knowledge in real-world scenarios.
             </p>
             <div className="flex flex-row mt-8">
               <TabButton selectTab={() => handleTabChange("skills")} active={tab === "skills"}>

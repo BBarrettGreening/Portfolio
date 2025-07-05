@@ -36,7 +36,7 @@ const HeroSection = () => {
                     <button className="px-6 py-3 rounded-full mr-4 bg-gradient-to-br from-[#663300] via-[#997a00] to-[#da9837] hover:bg-[#0a0a05] text-black w-full sm:w-fit">
                         <a href='mailto:BBarrettGreening@proton.me'>Contact Me.</a>
                     </button>
-                    <form method="get" action="./PortfolioCV.pdf">
+                    <form method="get" action="./CV.pdf">
                     <button className="px-1 py-1 rounded-full bg-gradient-to-br from-[#663300] via-[#997a00] to-[#da9837] hover:bg-[#59684a] text-[#ECDFCC] mt-3 w-full- sm:w-fit">
                         <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">
                             Download my CV.
