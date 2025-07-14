@@ -69,7 +69,7 @@ const AboutSection = () => {
               About Me
             </h2>
             <p className="test-base md:text-lg">
-              I&apos;m Bustamante Barrett-Greening, a 20 year old student currently studying BSc (Hons) Computer Science at the University of Plymouth, right now I&apos;m preparing for my placement with HM Land Registry in Stage 3 of my course. This page is a showcase of my personal projects and achievements, designed to expand as I progress through my studies and career. I'm always looking for new projects and challenges so contact me to find out how I can help you.
+              I&apos;m Bustamante Barrett-Greening, a 20 year old student currently studying BSc (Hons) Computer Science at the University of Plymouth, right now I&apos;m preparing for my placement with HM Land Registry in Stage 3 of my course. This page is a showcase of my personal projects and achievements, designed to expand as I progress through my studies and career. I&apos;m always looking for new projects and challenges so contact me to find out how I can help you.
             </p>
             <div className="flex flex-row mt-8">
               <TabButton selectTab={() => handleTabChange("skills")} active={tab === "skills"}>
