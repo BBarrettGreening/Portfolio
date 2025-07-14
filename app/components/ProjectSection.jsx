@@ -6,8 +6,8 @@ import ProjectTag from './ProjectTag';
 const projectsData = [
     {
         id:1,
-        title:"JurassicMusicSociety Website",
-        description:"I created a website for the JurassicMusicSociety, my first real-world project using HTML, CSS and JavaScript. This was a fun project to work on and gave me a good understanding of how to create a website from scratch. It is now hosted on GitHub Pages as I improved the design utilizing Next.js framework.",
+        title:"Jurassic Music Society Website",
+        description:"I developed a website for the Jurassic Music Society, my first real-world project using HTML, CSS and JavaScript. This was a fun project to work on and gave me a good understanding of how to create a website from scratch. It is now hosted on GitHub Pages as I improved the design utilizing Next.js framework. This project was also good experience into working for people and meeting client requirements.",
         image:"./JurassicMusicSociety.png",
         tag: ["All", "HTML"],
         gitUrl: "https://github.com/BBarrettGreening/bbarrettgreening.github.io",
@@ -15,8 +15,8 @@ const projectsData = [
     },
     {
         id:2,
-        title:"Next.js JurassicMusicSociety Website",
-        description:"this is an improved version of the HTML website I made for JurassicMusicSociety using the Next.js framework. Using Next.js has meant I'm able to host it on Vercel so that it is more secure and faster than the previous version. This project has given me a good understanding of how to use Next.js and how to improve upon previous work. There are also no hosting fees through Vercel so JurassicMusicSociety no longer has to pay for that.",
+        title:"Next.js Jurassic Music Society Website",
+        description:"this is an improved version of the HTML website I made for Jurassic Music Society using the Next.js framework. Using Next.js has meant I'm able to host it on Vercel so that it is more secure and faster than the previous version. This project has given me a good understanding of the Next.js framework and how to improve upon previous work. Monthly hosting costs were reduced by 85% as they now only have to pay domain fees since Vercel offers free hosting.",
         image:"./NJSJurassicMusicSociety.png",
         tag: ["All", "Next.js"],
         gitUrl: "https://github.com/BBarrettGreening/NextJSJurassicMusicSociety",
@@ -25,7 +25,7 @@ const projectsData = [
     {
         id:3,
         title:"Portfolio Website",
-        description:"I created this portfolio website using Next.js framework so I could deepen my understanding in using it. I will continue to improve this site as I have more projects and experience to add.",
+        description:"I created this portfolio website using Next.js framework as preperation for improving the Jurassic Music Society's website. As I become more confident with my development skills and complete more projects, this website I will continue to improve.",
         image:"./PortfolioSite.png",
         tag: ["All", "Next.js"],
         gitUrl: "https://github.com/BBarrettGreening/Portfolio",
@@ -34,11 +34,20 @@ const projectsData = [
     {
         id:4,
         title:"R2Electrical LTD Website",
-        description:"I designed and manage R2Electrical LTD's business site through the online provider fasthost. This was my first real-world experience with designing and hosting a website and gave me good inspiration for my other projects.",
+        description:"I designed and manage R2Electrical LTD's business website through the online provider Wix. This was my first project completed for a client and provided me with valuable insight into the expectations of a business and good SEO optimisation strategies. The continued work on this website has seen the addition of a commerical clients page and integration of Google Ads Tags for monitoring advert conversions.",
         image:"./R2Electrical.png",
         tag: ["All", "Design"],
         gitUrl: "/",
         previewUrl: "https://www.r2electricalltd.com",
+    },
+    {
+        id:5,
+        title:"Spotify Playlist Creation From WhatsApp Export",
+        description:"I developed a Springboot Java web service to authenticate with Spotify's API then parse a WhatsApp chat export to identify songs sent on Fridays and create a unique dated playlist for each Friday that includes the songs sent on that date. It then generates an export to match the file that the website uses to get playlist data, greatly streamlining the process of updating playlists. This project was partially vibe coded using Claude AI and the filesystem MCP after being introduced to these in Stage 2 of my degree. Currently I am hosting this project using Koyeb.",
+        image:"./JmsSpotify.png",
+        tag: ["All", "Java"],
+        gitUrl: "https://github.com/BBarrettGreening/jmsSpotifyAuth",
+        previewUrl: "https://cooperative-janeen-uop-6f3c4338.koyeb.app/",
     }
 ]
 
@@ -79,8 +88,13 @@ const ProjectSection = () => {
                 name="Design" 
                 isSelected={tag === "Design"}
             />
+            <ProjectTag 
+                onClick={handleTagChange} 
+                name="Java" 
+                isSelected={tag === "Java"}
+            />
         </div>
-        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid md:grid-cols-3 gap-8 md:gap-12 mt-5">
             {filteredProjects.map((project) => 
             <ProjectCard 
             key={project.id} 

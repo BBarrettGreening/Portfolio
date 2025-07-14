@@ -14,19 +14,26 @@ const TAB_DATA = [
         <li>JavaScript</li>
         <li>Next.js</li>
         <li>C++</li>
+        <li>Java</li>
       </ul>
     )
   },
-  {
+    {
     title: "Education",
     id: "education",
     content: (
-      <ul className="list-disc pl-2">
-        <li>Computer Science A-Level</li>
-        <li>Mathematics A-level</li>
-        <li>Psychology A-level</li>
-        <li className="text-slate-400 list-none">Thomas Hardye Sixth Form</li>
-      </ul>
+      <>
+        <ul className="list-disc pl-2">
+          <li>BSc (Hons) Computer Science - Stage 3</li>
+          <li className="text-slate-400 list-none">University of Plymouth</li>
+        </ul>
+        <ul className="list-disc pl-2 mt-4">
+          <li>Computer Science A-Level</li>
+          <li>Mathematics A-level</li>
+          <li>Psychology A-level</li>
+          <li className="text-slate-400 list-none">Thomas Hardye Sixth Form</li>
+        </ul>
+      </>
     )
   },
   {
@@ -62,7 +69,7 @@ const AboutSection = () => {
               About Me
             </h2>
             <p className="test-base md:text-lg">
-              I am a 20 year old student currently studying BSc (Hons) Computer Science at the University of Plymouth, I&apos;m currently preparing for my placement with HM Land Registry in Stage 3 of my course. This page is a showcase of my personal projects and achievements, designed to expand as I progress through my studies and career. I have a passion for programming and technology, and I&apos;m always looking for new challenges to improve my skills. I believe that practical experience is key to learning, and I enjoy working on projects that allow me to apply my knowledge in real-world scenarios.
+              I am a 20 year old student currently studying BSc (Hons) Computer Science at the University of Plymouth, right now I&apos;m preparing for my placement with HM Land Registry in Stage 3 of my course. This page is a showcase of my personal projects and achievements, designed to expand as I progress through my studies and career. I'm always looking for new projects and challenges so contact me to find out how I can help you.
             </p>
             <div className="flex flex-row mt-8">
               <TabButton selectTab={() => handleTabChange("skills")} active={tab === "skills"}>
