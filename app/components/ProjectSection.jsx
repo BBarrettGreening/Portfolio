@@ -67,7 +67,8 @@ const ProjectSection = () => {
         <h2 className="text-center text-4xl font-bold text-white mt-10 mb-4">
             My Projects
         </h2>
-        <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
+        {/* Mobile-friendly project tags - now wrap properly */}
+        <div className="text-white flex flex-wrap justify-center items-center gap-2 py-6 px-4">
             <ProjectTag 
                 onClick={handleTagChange} 
                 name="All" 
@@ -94,7 +95,8 @@ const ProjectSection = () => {
                 isSelected={tag === "Java"}
             />
         </div>
-        <div className="grid md:grid-cols-3 gap-8 md:gap-12 mt-5">
+        {/* Mobile-friendly project grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mt-5 px-4">
             {filteredProjects.map((project) => 
             <ProjectCard 
             key={project.id} 
