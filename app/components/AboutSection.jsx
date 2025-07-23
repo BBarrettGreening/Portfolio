@@ -25,13 +25,13 @@ const TAB_DATA = [
       <>
         <ul className="list-disc pl-2">
           <li>BSc (Hons) Computer Science - Stage 3</li>
-          <li className="text-slate-400 list-none">University of Plymouth</li>
+          <li className="text-slate-400 list-none">University of Plymouth (2023-Present)</li>
         </ul>
         <ul className="list-disc pl-2 mt-4">
           <li>Computer Science A-Level</li>
           <li>Mathematics A-level</li>
           <li>Psychology A-level</li>
-          <li className="text-slate-400 list-none">Thomas Hardye Sixth Form</li>
+          <li className="text-slate-400 list-none">Thomas Hardye Sixth Form (2021-2023)</li>
         </ul>
       </>
     )
