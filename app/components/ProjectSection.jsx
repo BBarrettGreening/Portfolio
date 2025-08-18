@@ -47,7 +47,7 @@ const projectsData = [
         image:"./JmsSpotify.png",
         tag: ["All", "Java"],
         gitUrl: "https://github.com/BBarrettGreening/jmsSpotifyAuth",
-        previewUrl: "/",
+        previewUrl: "",
     }
 ]
 
