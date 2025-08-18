@@ -43,11 +43,11 @@ const projectsData = [
     {
         id:5,
         title:"Spotify Playlist Creation From WhatsApp Export",
-        description:"I developed a Springboot Java web service to authenticate with Spotify's API then parse a WhatsApp chat export to identify songs sent on Fridays and create a unique dated playlist for each Friday that includes the songs sent on that date. It then generates an export to match the file that the website uses to get playlist data, greatly streamlining the process of updating playlists. This project was partially vibe coded using Claude AI and the filesystem MCP after being introduced to these in Stage 2 of my degree. Currently I am hosting this project using Koyeb.",
+        description:"I developed a Springboot Java web service to authenticate with Spotify's API then parse a WhatsApp chat export to identify songs sent on Fridays and create a unique dated playlist for each Friday that includes the songs sent on that date if it's a Friday. It then generates an export to match the file that the website uses to get playlist data, greatly streamlining the process of updating playlists. This project was partially vibe coded using Claude AI and the filesystem MCP after being introduced to these in Stage 2 of my degree. This project was previously hosted using Koyeb's free trial.",
         image:"./JmsSpotify.png",
         tag: ["All", "Java"],
         gitUrl: "https://github.com/BBarrettGreening/jmsSpotifyAuth",
-        previewUrl: "https://cooperative-janeen-uop-6f3c4338.koyeb.app/",
+        previewUrl: "/",
     }
 ]
 
