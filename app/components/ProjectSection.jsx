@@ -48,7 +48,16 @@ const projectsData = [
         tag: ["All", "Java"],
         gitUrl: "https://github.com/BBarrettGreening/jmsSpotifyAuth",
         previewUrl: "/",
-    }
+    },
+        {
+        id:6,
+        title:"Wave Connections CIC Website",
+        description:"I designed and provide support for Wave Connections CIC's website through the online provider Wix. This project reinforced my understanding of meeting client expectations and business needs. The GitHub option for this project will take you to a Linkedin post showing the previous design which was outdated and harder to navigate.",
+        image:"./WaveConnections.png",
+        tag: ["All", "Design"],
+        gitUrl: "https://www.linkedin.com/posts/bustamante-barrett-greening-820838327_i-recently-completed-a-design-project-for-activity-7369450691095998465-Eyfu?utm_source=share&utm_medium=member_android&rcm=ACoAAFKG_ZgBUTqBVkF5twaSlcOGUvzbjngTURU",
+        previewUrl: "https://www.waveconnections.org",
+    },
 ]
 
 const ProjectSection = () => {
