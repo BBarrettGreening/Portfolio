@@ -75,19 +75,22 @@ const SKILLS = [
   },
 ]
 
-function InfraDiagram({ selected, onSelect }) {
+function InfraDiagram({ selected, onSelect, expanded = false }) {
+  const sp = expanded ? 'space-y-3' : 'space-y-1.5'
+  const fs = expanded ? 'text-xs' : 'text-[9px]'
+
   return (
-    <div className="font-mono text-xs space-y-1.5">
+    <div className={`font-mono text-xs ${sp}`}>
       <style>{`
         @keyframes flow-down { to { stroke-dashoffset: -24; } }
         .arrow-anim { animation: flow-down 1.4s linear infinite; }
-        .skill-node { cursor: pointer; transition: all 0.15s; }
+        .skill-node { cursor: pointer; transition: all 0.2s; }
         .skill-node:hover { opacity: 0.85; }
       `}</style>
 
-      {/* GitLab at top */}
-      <SkillNode id="gitlab" selected={selected} onSelect={onSelect} skills={SKILLS} className="flex justify-center">
-        <NodeBox id="gitlab" selected={selected} skills={SKILLS} width="w-full" />
+      {/* Git at top — full width */}
+      <SkillNode id="gitlab" selected={selected} onSelect={onSelect} expanded={expanded} skills={SKILLS} className="flex justify-center">
+        <NodeBox id="gitlab" selected={selected} expanded={expanded} skills={SKILLS} width="w-full" />
       </SkillNode>
 
       {/* Single arrow on mobile */}
@@ -95,51 +98,56 @@ function InfraDiagram({ selected, onSelect }) {
         <FlowArrow color="#3db93d" />
       </div>
 
-      {/* Two arrows from GitLab — desktop */}
+      {/* Two arrows — desktop */}
       <div className="hidden sm:flex justify-around px-4">
         <div className="flex flex-col items-center gap-0.5">
           <FlowArrow color="#3db93d" />
-          <span className="text-[9px] text-os-muted font-mono">triggers</span>
+          <span className={`${fs} text-os-muted font-mono`}>triggers</span>
         </div>
         <div className="flex flex-col items-center gap-0.5">
           <FlowArrow color="#3db93d" />
-          <span className="text-[9px] text-os-muted font-mono">tf apply</span>
+          <span className={`${fs} text-os-muted font-mono`}>tf apply</span>
         </div>
       </div>
 
-      {/* Two columns: OpenShift (left) and AWS (right) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+      {/* Two columns — stretch fully in both modes */}
+      <div className={`grid grid-cols-1 sm:grid-cols-2 ${expanded ? 'gap-6' : 'gap-2'}`}>
 
         {/* Left — Jenkins → Helm → OpenShift → Docker */}
-        <div className="space-y-1.5">
-          <SkillNode id="cicd" selected={selected} onSelect={onSelect} skills={SKILLS} className="flex justify-center">
-            <NodeBox id="cicd" selected={selected} skills={SKILLS} width="w-full" />
+        <div className={sp}>
+          <SkillNode id="cicd" selected={selected} onSelect={onSelect} expanded={expanded} skills={SKILLS} className="flex justify-center">
+            <NodeBox id="cicd" selected={selected} expanded={expanded} skills={SKILLS} width="w-full" />
           </SkillNode>
           <FlowArrow color="#3db93d" />
-          <SkillNode id="helm" selected={selected} onSelect={onSelect} skills={SKILLS} className="flex justify-center">
-            <NodeBox id="helm" selected={selected} skills={SKILLS} width="w-full" />
+          <SkillNode id="helm" selected={selected} onSelect={onSelect} expanded={expanded} skills={SKILLS} className="flex justify-center">
+            <NodeBox id="helm" selected={selected} expanded={expanded} skills={SKILLS} width="w-full" />
           </SkillNode>
           <FlowArrow color="#3db93d" />
-          <LayerBox id="openshift" selected={selected} onSelect={onSelect} skills={SKILLS}>
-            <div className="space-y-1.5 mt-1">
+          <LayerBox id="openshift" selected={selected} onSelect={onSelect} expanded={expanded} skills={SKILLS}>
+            <div className={`${sp} mt-1`}>
               <FlowArrow color="#EE0000" />
-              <LayerBox id="docker" selected={selected} onSelect={onSelect} skills={SKILLS}>
-                <div className="flex flex-col gap-1 mt-1">
-                  <SkillNode id="python" selected={selected} onSelect={onSelect} skills={SKILLS} className="">
-                    <NodeBox id="python" selected={selected} skills={SKILLS} width="w-full" small />
+              <LayerBox id="docker" selected={selected} onSelect={onSelect} expanded={expanded} skills={SKILLS}>
+                <div className={`grid grid-cols-2 gap-2 mt-1`}>
+                  <SkillNode id="python" selected={selected} onSelect={onSelect} expanded={expanded} skills={SKILLS} className="">
+                    <NodeBox id="python" selected={selected} expanded={expanded} skills={SKILLS} width="w-full" small={!expanded} />
                   </SkillNode>
-                  <SkillNode id="java" selected={selected} onSelect={onSelect} skills={SKILLS} className="">
-                    <NodeBox id="java" selected={selected} skills={SKILLS} width="w-full" small />
+                  <SkillNode id="java" selected={selected} onSelect={onSelect} expanded={expanded} skills={SKILLS} className="">
+                    <NodeBox id="java" selected={selected} expanded={expanded} skills={SKILLS} width="w-full" small={!expanded} />
                   </SkillNode>
                 </div>
               </LayerBox>
-              <SkillNode id="linux" selected={selected} onSelect={onSelect} skills={SKILLS} className="">
-                <div className={`border rounded p-1.5 flex items-center gap-2 transition-all duration-150 ${selected === 'linux' ? 'border-[#EE0000] bg-[#EE000018]' : 'border-[#EE000055]'}`}>
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#EE0000] shrink-0"></div>
-                  <div>
-                    <p className="text-[#EE0000] font-bold text-[9px]">Linux</p>
-                    <p className="text-os-muted text-[8px]">RHEL · Nagios</p>
+              <SkillNode id="linux" selected={selected} onSelect={onSelect} expanded={expanded} skills={SKILLS} className="">
+                <div className={`border rounded transition-all duration-200 ${expanded ? 'p-3' : 'p-1.5'} ${selected === 'linux' || expanded ? 'border-[#EE0000] bg-[#EE000018]' : 'border-[#EE000055]'}`}>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#EE0000] shrink-0"></div>
+                    <p className="text-[#EE0000] font-bold" style={{ fontSize: expanded ? '11px' : '9px' }}>Linux</p>
+                    <p className="text-os-muted" style={{ fontSize: expanded ? '10px' : '8px' }}>RHEL · Nagios</p>
                   </div>
+                  {expanded && (
+                    <p className="text-os-text-dim text-xs leading-relaxed mt-2">
+                      {SKILLS.find(s => s.id === 'linux').desc}
+                    </p>
+                  )}
                 </div>
               </SkillNode>
             </div>
@@ -147,69 +155,88 @@ function InfraDiagram({ selected, onSelect }) {
         </div>
 
         {/* Right — Terraform → AWS */}
-        <div className="space-y-1.5">
-          <SkillNode id="terraform" selected={selected} onSelect={onSelect} skills={SKILLS} className="flex justify-center">
-            <NodeBox id="terraform" selected={selected} skills={SKILLS} width="w-full" />
+        <div className={sp}>
+          <SkillNode id="terraform" selected={selected} onSelect={onSelect} expanded={expanded} skills={SKILLS} className="flex justify-center">
+            <NodeBox id="terraform" selected={selected} expanded={expanded} skills={SKILLS} width="w-full" />
           </SkillNode>
           <FlowArrow color="#f0ab00" />
-          <LayerBox id="aws" selected={selected} onSelect={onSelect} skills={SKILLS}>
-            <p className="text-[#f0ab0099] text-[9px] text-center mt-1">Supporting infrastructure</p>
+          <LayerBox id="aws" selected={selected} onSelect={onSelect} expanded={expanded} skills={SKILLS}>
+            {!expanded && <p className="text-[#f0ab0099] text-[9px] text-center mt-1">Supporting infrastructure</p>}
           </LayerBox>
         </div>
       </div>
 
-
-      {/* Description panel */}
-      <div className={`mt-3 rounded border transition-all duration-200 overflow-hidden ${selected ? 'border-os-border' : 'border-transparent'}`}
-        style={{ minHeight: selected ? '56px' : '0' }}>
-        {selected && (() => {
-          const skill = SKILLS.find(s => s.id === selected)
-          return (
-            <div className="p-3 space-y-1">
-              <p className="font-bold text-[11px]" style={{ color: skill.color }}>{skill.label}</p>
-              <p className="text-os-text-dim text-[11px] leading-relaxed">{skill.desc}</p>
-            </div>
-          )
-        })()}
-      </div>
+      {/* Click-to-expand description panel (normal mode only) */}
+      {!expanded && (
+        <div
+          className={`mt-3 rounded border transition-all duration-300 overflow-hidden ${selected ? 'border-os-border' : 'border-transparent'}`}
+          style={{ minHeight: selected ? '56px' : '0' }}
+        >
+          {selected && (() => {
+            const skill = SKILLS.find(s => s.id === selected)
+            return (
+              <div className="p-3 space-y-1">
+                <p className="font-bold text-[11px]" style={{ color: skill.color }}>{skill.label}</p>
+                <p className="text-os-text-dim text-[11px] leading-relaxed">{skill.desc}</p>
+              </div>
+            )
+          })()}
+        </div>
+      )}
     </div>
   )
 }
 
-function NodeBox({ id, selected, skills, width, small }) {
+function NodeBox({ id, selected, expanded, skills, width, small }) {
   const skill = skills.find(s => s.id === id)
-  const active = selected === id
+  const active = selected === id || expanded
+  const labelSize = expanded ? '13px' : small ? '9px' : '11px'
+  const subSize   = expanded ? '11px' : '9px'
   return (
-    <div className={`border rounded px-3 py-1.5 text-center transition-all duration-150 ${width} ${active ? 'bg-opacity-20' : ''}`}
+    <div
+      className={`border rounded text-center transition-all duration-200 ${width} ${expanded ? 'px-4 py-3' : 'px-3 py-1.5'}`}
       style={{
         borderColor: active ? skill.color : skill.color + '88',
-        background: active ? skill.color + '22' : skill.color + '0a',
-      }}>
-      <p className="font-bold" style={{ color: skill.color, fontSize: small ? '9px' : '11px' }}>{skill.label}</p>
-      <p className="text-os-muted" style={{ fontSize: '9px' }}>{skill.sublabel}</p>
+        background:  active ? skill.color + '22' : skill.color + '0a',
+      }}
+    >
+      <p className="font-bold" style={{ color: skill.color, fontSize: labelSize }}>{skill.label}</p>
+      <p className="text-os-muted" style={{ fontSize: subSize }}>{skill.sublabel}</p>
+      {expanded && (
+        <p className="text-os-text-dim leading-relaxed mt-2 text-left text-xs">
+          {skill.desc}
+        </p>
+      )}
     </div>
   )
 }
 
-function LayerBox({ id, selected, onSelect, skills, children }) {
+function LayerBox({ id, selected, onSelect, expanded, skills, children }) {
   const skill = skills.find(s => s.id === id)
-  const active = selected === id
+  const active = selected === id || expanded
   return (
-    <div className="border rounded p-2 transition-all duration-150"
+    <div
+      className={`border rounded transition-all duration-200 ${expanded ? 'p-3' : 'p-2'}`}
       style={{
         borderColor: active ? skill.color : skill.color + '66',
-        background: active ? skill.color + '11' : 'transparent',
-      }}>
+        background:  active ? skill.color + '11' : 'transparent',
+      }}
+    >
       <button className="skill-node w-full text-center mb-1.5" onClick={() => onSelect(id === selected ? null : id)}>
-        <p className="font-bold uppercase tracking-wider text-[10px]" style={{ color: skill.color }}>{skill.label}</p>
-        <p className="text-os-muted text-[9px]">{skill.sublabel}</p>
+        <p className="font-bold uppercase tracking-wider" style={{ color: skill.color, fontSize: expanded ? '12px' : '10px' }}>{skill.label}</p>
+        <p className="text-os-muted" style={{ fontSize: expanded ? '10px' : '9px' }}>{skill.sublabel}</p>
+        {expanded && (
+          <p className="text-os-text-dim text-left leading-relaxed mt-1 text-xs">
+            {skill.desc}
+          </p>
+        )}
       </button>
       {children}
     </div>
   )
 }
 
-function SkillNode({ id, selected, onSelect, children, className }) {
+function SkillNode({ id, selected, onSelect, expanded, children, className }) {
   return (
     <div className={`skill-node ${className}`} onClick={() => onSelect(id === selected ? null : id)}>
       {children}
@@ -284,6 +311,12 @@ const TAB_DATA = [
 const AboutSection = () => {
   const [tab, setTab] = React.useState("education");
   const [selectedSkill, setSelectedSkill] = React.useState(null);
+  const [expanded, setExpanded] = React.useState(false);
+
+  React.useEffect(() => {
+    document.body.style.overflow = expanded ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [expanded]);
 
   return (
     <section className="py-20">
@@ -304,13 +337,67 @@ const AboutSection = () => {
 
           {/* Left — interactive skills diagram (wider) */}
           <div className="md:col-span-3 mb-8 md:mb-0">
+            {/* Expanded overlay */}
+            <style>{`
+              @keyframes overlay-in {
+                from { opacity: 0; transform: translateY(16px); }
+                to   { opacity: 1; transform: translateY(0); }
+              }
+              @keyframes overlay-out {
+                from { opacity: 1; transform: translateY(0); }
+                to   { opacity: 0; transform: translateY(16px); }
+              }
+              .overlay-enter { animation: overlay-in 0.25s cubic-bezier(0.16,1,0.3,1) forwards; }
+              .overlay-exit  { animation: overlay-out 0.2s ease-in forwards; }
+            `}</style>
+            {expanded && (
+            <div className="overlay-enter fixed inset-0 top-14 z-40 overflow-auto p-4"
+              style={{ background: 'var(--os-navy)' }}
+            >
+              <div className="console-panel w-full min-h-full flex flex-col">
+                <div className="console-header justify-between shrink-0">
+                  <span className="text-os-text-dim text-xs font-mono">My Skills</span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-os-muted text-[10px] font-mono hidden sm:block">click a node to read more</span>
+                    <button
+                      onClick={() => setExpanded(false)}
+                      aria-label="Close fullscreen"
+                      title="Close"
+                      className="text-os-text-dim hover:text-os-red transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div className="p-6 overflow-auto flex-1">
+                  <InfraDiagram selected={selectedSkill} onSelect={setSelectedSkill} expanded={true} />
+                </div>
+              </div>
+            </div>
+            )}
+
+            {/* Normal panel */}
             <div className="console-panel w-full">
               <div className="console-header justify-between">
                 <span className="text-os-text-dim text-xs font-mono">My Skills</span>
-                <span className="text-os-muted text-[10px] font-mono">click a node to expand</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-os-muted text-[10px] font-mono hidden sm:block">click a node to read more</span>
+                  <button
+                    onClick={() => setExpanded(true)}
+                    aria-label="Expand skills diagram"
+                    title="Expand to fullscreen"
+                    className="hidden md:block text-os-text-dim hover:text-os-red transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                    </svg>
+                  </button>
+                </div>
               </div>
               <div className="p-6">
-                <InfraDiagram selected={selectedSkill} onSelect={setSelectedSkill} />
+                <InfraDiagram selected={selectedSkill} onSelect={setSelectedSkill} expanded={false} />
               </div>
             </div>
           </div>
