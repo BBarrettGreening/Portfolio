@@ -47,7 +47,7 @@ const HeroSection = () => {
               <div className="p-5 text-os-text-dim text-sm leading-relaxed space-y-3">
                 <p>
                   I&apos;m a DevOps Engineer working at HM Land Registry in the WebOps team where I work with 
-                  Linux infrastructure, OpenShift, AWS, and internal tooling. I'm currently 
+                  Linux infrastructure, OpenShift, AWS, and internal tooling. I&apos;m currently
                   completing my placement year in my role before I go part time to complete 
                   my final year studying Computer Science at the University of Plymouth.
                 </p>
