@@ -53,7 +53,7 @@ const HeroSection = () => {
                 </p>
                 <p>
                   This portfolio is a showcase of my personal projects and achievements alongside my academic
-                  and professional work. I&apos;m always looking for new challenges — get in touch if I can help you.
+                  and professional work. 
                 </p>
               </div>
             </div>

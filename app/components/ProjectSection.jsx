@@ -71,7 +71,7 @@ const ProjectSection = () => {
     return (
         <>
             {/* Section heading */}
-            <div className="mb-10">
+            <div className="mb-8">
                 <p className="text-os-text-dim text-xs font-mono uppercase tracking-widest mb-2">
                     Projects
                 </p>
@@ -79,6 +79,9 @@ const ProjectSection = () => {
                     My <span className="text-os-red">Work</span>
                 </h2>
                 <div className="os-divider mt-3"></div>
+                <p className="text-os-text-dim text-sm mt-4 max-w-2xl leading-relaxed">
+                    Here&apos;s a selection of some the projects I've made with different technologies.
+                </p>
             </div>
 
             {/* Filter tags */}

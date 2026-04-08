@@ -39,6 +39,7 @@ const Navbar = () => {
                             onClick={toggleTheme}
                             className="ml-2 p-2 text-os-text-dim hover:text-os-text transition-colors rounded"
                             aria-label="Toggle theme"
+                            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
                         >
                             {theme === 'dark' ? (
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,6 +59,7 @@ const Navbar = () => {
                             onClick={toggleTheme}
                             className="p-2 text-os-text-dim hover:text-os-text transition-colors rounded"
                             aria-label="Toggle theme"
+                            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
                         >
                             {theme === 'dark' ? (
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
