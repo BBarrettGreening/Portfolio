@@ -5,61 +5,114 @@ import { TypeAnimation } from 'react-type-animation';
 
 const HeroSection = () => {
   return (
-    <section>
-        <div className="grid grid-cols-1 lg:gap-16 sm:grid-cols-12 ">
-            <div className="col-span-7 place-self-center mb-6 text-center sm:text-left">
-                <h1 className="mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold text-[#ECDFCC]">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                        Hello, I&apos;m{" "}
-                    </span>
-                    <br></br>
-                    <TypeAnimation
-                    sequence={[
-                        'Bustamante',
-                        1000,
-                        'a Computer scientist',
-                        1000,
-                        'a Software engineer',
-                        1000,
-                        'a Web developer',
-                        1000,
-                        'a Designer',
-                        1000
-                    ]}
-                    wrapper="span"
-                    speed={50}
-                    repeat={Infinity}
-                    />
-                </h1>
-                <p className="text-[#ADB7BE] text-base mb-4 sm:text-lg lg:text-2xl">
-                    Welcome to my portfolio, this page is a brief introduction to my technical background and the projects i&apos;ve completed beyond my academic studies.
-                </p>
-                <div>
-                    <button className="px-6 py-3 rounded-full mr-4 bg-gradient-to-br from-[#663300] via-[#997a00] to-[#da9837] hover:bg-[#0a0a05] text-black w-full sm:w-fit">
-                        <a href='mailto:BBarrettGreening@proton.me'>Contact Me.</a>
-                    </button>
-                    <form method="get" action="./CV.pdf">
-                    <button className="px-1 py-1 rounded-full bg-gradient-to-br from-[#663300] via-[#997a00] to-[#da9837] hover:bg-[#59684a] text-[#ECDFCC] mt-3 w-full- sm:w-fit">
-                        <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">
-                            Download my CV.
-                            </span>
-                    </button>
-                    </form>
-                </div>
-            </div>
-            <div className="col-span-5 place-self-center mt-8">
-                <div className="rounded-full bg-[#181818] w-[420px] h-[420px] flex items-center justify-center">
-                    <Image 
-                    src="./headshot.jpg"
-                    alt="test"
-                    className="rounded-full"
-                    height={370}
-                    width={370}
-                    />
-                </div>
-            </div>
-        </div>
+    <section className="py-10">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
+          {/* Left — main content */}
+          <div className="lg:col-span-7 order-2 lg:order-1 space-y-6">
+
+            {/* Name + role */}
+            <div>
+              <p className="text-os-text-dim text-sm font-mono mb-2 tracking-widest uppercase">
+                Portfolio
+              </p>
+              <h1 className="text-4xl md:text-5xl font-bold text-os-text leading-tight">
+                Bustamante<br />
+                <span className="text-os-red">Barrett-Greening</span>
+              </h1>
+              <div className="mt-3 h-7 flex items-center gap-2 font-mono text-os-text-dim text-sm">
+                <span className="text-os-red">$</span>
+                <TypeAnimation
+                  sequence={[
+                    'DevOps Engineer',     1200,
+                    'Software Engineer',   1200,
+                    'Web Developer',       1200,
+                    'Designer',            1200,
+                    'Linux Enthusiast',    1200,
+                  ]}
+                  wrapper="span"
+                  speed={50}
+                  repeat={Infinity}
+                />
+                <span className="cursor-blink text-os-red">▮</span>
+              </div>
+            </div>
+
+            {/* Bio panel */}
+            <div className="console-panel">
+              <div className="console-header">
+                <span className="text-os-red text-xs font-mono font-semibold uppercase tracking-wider">Overview</span>
+              </div>
+              <div className="p-5 text-os-text-dim text-sm leading-relaxed space-y-3">
+                <p>
+                  I&apos;m a DevOps Engineer working at HM Land Registry in the WebOps team where I work with 
+                  Linux infrastructure, OpenShift, AWS, and internal tooling. I&apos;m currently
+                  completing my placement year in my role before I go part time to complete 
+                  my final year studying Computer Science at the University of Plymouth.
+                </p>
+                <p>
+                  This portfolio is a showcase of my personal projects and achievements alongside my academic
+                  and professional work. 
+                </p>
+              </div>
+            </div>
+
+            {/* CTA buttons */}
+            <div className="flex flex-wrap gap-3">
+              <a href="mailto:BBarrettGreening@proton.me" className="os-btn-primary">
+                Contact Me
+              </a>
+              <a href="./CV.pdf" className="os-btn-secondary">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download CV
+              </a>
+            </div>
+
+            {/* Status chips */}
+            <div className="flex flex-wrap gap-2 pt-2">
+              {[
+                { label: 'DevOps',               colour: 'status-red'     },
+                { label: 'HM Land Registry',     colour: 'status-running' },
+                { label: 'BSc Computer Science', colour: 'status-yellow'  },
+                { label: 'Plymouth, UK',         colour: 'status-ready'   },
+              ].map((item) => (
+                <span key={item.label} className={`status-badge ${item.colour}`}>
+                  <span className="status-dot"></span>
+                  {item.label}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Right — profile image */}
+          <div className="lg:col-span-5 order-1 lg:order-2">
+            <div className="console-panel mx-auto max-w-sm">
+              <div className="console-header justify-between">
+                <span className="text-os-text-dim text-xs font-mono">profile.jpg</span>
+                <span className="status-badge status-running">
+                  <span className="status-dot"></span>
+                  Loaded
+                </span>
+              </div>
+              <div className="p-4">
+                <div className="aspect-square rounded bg-os-surface overflow-hidden">
+                  <Image
+                    src="./headshot.jpg"
+                    alt="Bustamante Barrett-Greening"
+                    className="w-full h-full object-cover"
+                    height={400}
+                    width={400}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
   )
 }

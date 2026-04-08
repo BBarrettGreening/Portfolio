@@ -1,20 +1,16 @@
 import React from 'react'
 
 const TabButton = ({ active, selectTab, children }) => {
-    const borderColor = active ? "white" : "transparent";
-    const borderWidth = active ? "4px" : "0px"; 
-
     return (
-        <button onClick={selectTab}>
-            <p
-                className={`mr-3 font-semibold hover:text-white`}
-                style={{
-                    borderBottom: `solid ${borderWidth} ${borderColor}`,
-                    color: active ? 'white' : '#adb7be',
-                }}
-            >
-                {children}
-            </p>
+        <button
+            onClick={selectTab}
+            className={`px-4 py-2 text-sm font-medium rounded transition-all duration-150 border ${
+                active
+                    ? 'bg-os-red/10 border-os-red text-os-red'
+                    : 'border-os-border text-os-text-dim hover:border-os-muted hover:text-os-text bg-transparent'
+            }`}
+        >
+            {children}
         </button>
     );
 }
