@@ -34,7 +34,7 @@ const SKILLS = [
   {
     id: 'linux',
     label: 'Linux',
-    sublabel: 'RHEL / bare metal',
+    sublabel: 'RHEL / OpenSuse / Ubuntu',
     color: '#EE0000',
     desc: 'Server monitoring via Nagios, software updates and removal, storage management, and setting up additional monitors using Puppet.',
   },
@@ -137,18 +137,7 @@ function InfraDiagram({ selected, onSelect, expanded = false }) {
                 </div>
               </LayerBox>
               <SkillNode id="linux" selected={selected} onSelect={onSelect} expanded={expanded} skills={SKILLS} className="">
-                <div className={`border rounded transition-all duration-200 ${expanded ? 'p-3' : 'p-1.5'} ${selected === 'linux' || expanded ? 'border-[#EE0000] bg-[#EE000018]' : 'border-[#EE000055]'}`}>
-                  <div className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#EE0000] shrink-0"></div>
-                    <p className="text-[#EE0000] font-bold" style={{ fontSize: expanded ? '11px' : '9px' }}>Linux</p>
-                    <p className="text-os-muted" style={{ fontSize: expanded ? '10px' : '8px' }}>RHEL · Nagios</p>
-                  </div>
-                  {expanded && (
-                    <p className="text-os-text-dim text-xs leading-relaxed mt-2">
-                      {SKILLS.find(s => s.id === 'linux').desc}
-                    </p>
-                  )}
-                </div>
+                <NodeBox id="linux" selected={selected} expanded={expanded} skills={SKILLS} width="w-full" small={!expanded} />
               </SkillNode>
             </div>
           </LayerBox>
