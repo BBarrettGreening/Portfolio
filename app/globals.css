@@ -2,27 +2,274 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800&family=Red+Hat+Mono:wght@400;500;600&display=swap');
+
+/* Dark theme (default) */
+:root,
+[data-theme="dark"] {
+  --os-red:        #EE0000;
+  --os-red-dark:   #C00000;
+  --os-navy:       #0f1214;
+  --os-panel:      #151b1e;
+  --os-surface:    #1f2937;
+  --os-border:     #2d3748;
+  --os-muted:      #6b7280;
+  --os-text:       #e2e8f0;
+  --os-text-dim:   #94a3b8;
+  --os-blue:       #4da3ff;
+  --os-green:      #3db93d;
+  --os-yellow:     #f0ab00;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Light theme */
+[data-theme="light"] {
+  --os-red:        #CC0000;
+  --os-red-dark:   #aa0000;
+  --os-navy:       #eef0f4;
+  --os-panel:      #ffffff;
+  --os-surface:    #f3f4f6;
+  --os-border:     #c8cdd6;
+  --os-muted:      #6b7280;
+  --os-text:       #111827;
+  --os-text-dim:   #374151;
+  --os-blue:       #0055b3;
+  --os-green:      #1a6b1a;
+  --os-yellow:     #92400e;
+}
+
+[data-theme="light"] .console-panel {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .console-panel-accent {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--os-text);
+  background: var(--os-navy);
+  font-family: 'Red Hat Display', 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
+  /* ── Colour helpers ── */
+  .os-red       { color: var(--os-red); }
+  .os-blue      { color: var(--os-blue); }
+  .os-green     { color: var(--os-green); }
+  .os-yellow    { color: var(--os-yellow); }
+  .os-muted     { color: var(--os-muted); }
+  .os-text-dim  { color: var(--os-text-dim); }
+
+  /* ── Console panel (replaces terminal-window) ── */
+  .console-panel {
+    background: var(--os-panel);
+    border: 1px solid var(--os-border);
+    border-radius: 6px;
+  }
+
+  .console-header {
+    background: var(--os-surface);
+    border-bottom: 1px solid var(--os-border);
+    border-radius: 6px 6px 0 0;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Red accent bar on left edge — OpenShift console style */
+  .console-panel-accent {
+    background: var(--os-panel);
+    border: 1px solid var(--os-border);
+    border-left: 3px solid var(--os-red);
+    border-radius: 4px;
+    padding: 14px 16px;
+  }
+
+  /* ── Status badge ── */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Red Hat Mono', monospace;
+    font-size: 0.75rem;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .status-running {
+    background: color-mix(in srgb, var(--os-green) 15%, transparent);
+    color: var(--os-green);
+    border: 1px solid color-mix(in srgb, var(--os-green) 40%, transparent);
+  }
+
+  .status-ready {
+    background: color-mix(in srgb, var(--os-blue) 15%, transparent);
+    color: var(--os-blue);
+    border: 1px solid color-mix(in srgb, var(--os-blue) 40%, transparent);
+  }
+
+  .status-inactive {
+    background: color-mix(in srgb, var(--os-muted) 15%, transparent);
+    color: var(--os-muted);
+    border: 1px solid color-mix(in srgb, var(--os-muted) 40%, transparent);
+  }
+
+  .status-red {
+    background: color-mix(in srgb, var(--os-red) 12%, transparent);
+    color: var(--os-red);
+    border: 1px solid color-mix(in srgb, var(--os-red) 35%, transparent);
+  }
+
+  .status-yellow {
+    background: color-mix(in srgb, var(--os-yellow) 15%, transparent);
+    color: var(--os-yellow);
+    border: 1px solid color-mix(in srgb, var(--os-yellow) 40%, transparent);
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    display: inline-block;
+  }
+
+  /* ── Buttons ── */
+  .os-btn-primary {
+    background: var(--os-red);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid var(--os-red);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .os-btn-primary:hover {
+    background: var(--os-red-dark);
+    border-color: var(--os-red-dark);
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .os-btn-secondary {
+    background: transparent;
+    color: var(--os-text);
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid var(--os-border);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .os-btn-secondary:hover {
+    border-color: var(--os-text-dim);
+    background: var(--os-surface);
+    text-decoration: none;
+    color: var(--os-text);
+  }
+
+  /* ── Code / mono blocks ── */
+  .code-block {
+    background: var(--os-surface);
+    border: 1px solid var(--os-border);
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-family: 'Red Hat Mono', monospace;
+    font-size: 0.8rem;
+  }
+
+  /* ── Progress bar ── */
+  .progress-bar {
+    background: var(--os-border);
+    border-radius: 2px;
+    overflow: hidden;
+    height: 6px;
+  }
+
+  .progress-fill {
+    background: var(--os-red);
+    height: 100%;
+    transition: width 0.5s ease;
+  }
+
+  /* ── Nav link active indicator ── */
+  .nav-active {
+    color: var(--os-text);
+    border-bottom: 2px solid var(--os-red);
+  }
+
+  /* ── Blinking cursor ── */
+  .cursor-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  /* ── Section divider ── */
+  .os-divider {
+    height: 2px;
+    background: linear-gradient(90deg, var(--os-red) 0%, transparent 100%);
+    border: none;
+    margin: 0;
+    width: 48px;
+  }
 }
 
+/* ── Scrollbar ── */
+::-webkit-scrollbar       { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--os-navy); }
+::-webkit-scrollbar-thumb { background: var(--os-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--os-muted); }
+
+/* ── Selection ── */
+::selection {
+  background: var(--os-red);
+  color: #fff;
+}
+
+/* ── Links ── */
+a {
+  color: var(--os-blue);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: var(--os-blue);
+}

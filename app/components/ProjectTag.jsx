@@ -1,18 +1,18 @@
 import React from 'react'
 
-const ProjectTag = ({ name, onClick, isSelected}) => {
-    const buttonStyles = isSelected
-      ? "text-white bg-purple-500"
-      : "text-[#adb7be] border-slate-600 hover:border-white"
-
+const ProjectTag = ({ name, onClick, isSelected }) => {
     return (
-    <button 
-    className={`${buttonStyles} rounded-full border-2 px-3 py-2 sm:px-4 sm:py-2 md:px-6 md:py-3 text-sm sm:text-base md:text-xl cursor-pointer whitespace-nowrap`}
-    onClick={() => onClick(name)}
-    >
-        {name}
-    </button>
-  )
+        <button
+            className={`px-4 py-1.5 text-sm font-medium rounded border transition-all duration-150 ${
+                isSelected
+                    ? 'bg-os-red/10 border-os-red text-os-red'
+                    : 'border-os-border text-os-text-dim hover:border-os-muted hover:text-os-text bg-transparent'
+            }`}
+            onClick={() => onClick(name)}
+        >
+            {name}
+        </button>
+    )
 }
 
 export default ProjectTag
